@@ -34,3 +34,10 @@ Route::controller(TodolistController::class)->middleware(OnlyMemberMiddlware::cl
     Route::post("/todolist", "addTodo");
     Route::post("/todolist/{id}/delete", "removeTodo");
 });
+
+Route::fallback(function(){
+    return view("error", [
+        "title" => "Error on Page",
+        "error" => "404 Not Found"
+    ]);
+});
